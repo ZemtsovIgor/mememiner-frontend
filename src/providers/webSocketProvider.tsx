@@ -53,8 +53,6 @@ export const WebSocketProvider: FC<Props> = ({ children }: Props) => {
   }
 
   const sendTap = () => {
-    if (!DEFAULT_PIZZA.Initialized) return;
-
     const newPoints = wallet.points + 1;
 
     setWallet(prev => ({
