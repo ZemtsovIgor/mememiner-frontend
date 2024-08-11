@@ -279,6 +279,7 @@ export const FriendsWrap: any = styled.div`
       
       &__btn {
         flex: 8;
+        text-decoration: none;
         
         &.-copy {
           display: flex;

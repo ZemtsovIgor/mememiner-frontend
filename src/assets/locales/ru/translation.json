@@ -2,6 +2,9 @@
   "common": {
     "sort": "Фильтр"
   },
+  "share": {
+    "text": "Играй в Meme Lord и стань Властелином Мемов!\n+5000 бонусных монет!\n+25 000, если у тебя Telegram Premium"
+  },
   "sort": {
     "novelty": "Новые",
     "rarity": "Редкость",
