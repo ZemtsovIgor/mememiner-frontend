@@ -9,7 +9,7 @@ import {PATHS} from "./const/paths.constants";
 
 import i18n from './common/utils/i18n';
 import Loading from "./components/Loading";
-import Unknown from "./pages/Unknown";
+// import Unknown from "./pages/Unknown";
 // import Upgrade from "./pages/Upgrade/Upgrade";
 // import Items from "./pages/Items/Items";
 // import Friends from "./pages/Friends/Friends";
@@ -19,6 +19,7 @@ const Home = lazy(() => import("./pages/Home/Home"));
 const Upgrade = lazy(() => import("./pages/Upgrade/Upgrade"));
 const Items = lazy(() => import("./pages/Items/Items"));
 const Friends = lazy(() => import("./pages/Friends/Friends"));
+const Tasks = lazy(() => import("./pages/Tasks/Tasks"));
 
 function App() {
   return (
@@ -83,7 +84,7 @@ function App() {
                 element={
                   <Suspense fallback={<Loading />}>
                     <Layout>
-                      <Unknown />
+                      <Tasks />
                     </Layout>
                   </Suspense>
                 }
