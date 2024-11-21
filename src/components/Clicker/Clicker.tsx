@@ -1,32 +1,38 @@
 import React, {FC, useMemo, useState, useEffect, useRef} from 'react';
-import {connect} from "react-redux";
 import {animated, useTransition} from '@react-spring/web';
 import useWebApp from "../../hooks/useWebApp";
 import {WebApp} from "../../types/twa-types";
-import {AppStateType} from "../../store";
-import {clickerClick} from "../../store/wallet/actions";
-import {ClickerContainer, ClickerSparkText} from './Clicker.Styles';
-import {AppReducerState} from "../../store/app/reducers";
+import {ClickerContainer, ClickerSparkText, ItemImg} from './Clicker.Styles';
 import {wojak} from '../../assets/images/wojak';
-import {ITEM_TYPE, ITEMS_TYPES, RARITY_TYPES} from "../../types/items.d";
-import {ItemImg} from "../../pages/Items/Items.Styles";
-import {WalletReducerState} from "../../store/wallet/reducers";
+import {
+  ITEMS_TYPES,
+  RARITY_TYPES,
+  websocketRarityToItemRarity,
+  websocketTypeToItemType
+} from "../../types/items.d";
 import useWebSocket from "../../hooks/useWebSocket";
+import {inventoryImages} from "../../const/inventory.constants";
 
 interface Props {
-  app: AppReducerState;
-  wallet: WalletReducerState;
-  clickerClick: () => void;
 }
 
 const Clicker: FC<Props> = (props: Props) => {
-  const { app: { profile: { dressed } } } = props;
   const webApp: WebApp = useWebApp();
   const {
     sendTap,
     wallet: {
       availableEnergy,
-      tapThreshold,
+      totalPointsPerTap,
+      item1Collection,
+      item2Collection,
+      item3Collection,
+      item4Collection,
+      item5Collection,
+      item1Id,
+      item2Id,
+      item3Id,
+      item4Id,
+      item5Id
     }
   } = useWebSocket();
   const [isTouched, setIsTouched] = useState<boolean>(false);
@@ -93,13 +99,12 @@ const Clicker: FC<Props> = (props: Props) => {
   };
 
   const clickOnClicker = ({clientX, clientY}: {clientX: number, clientY: number}) => {
-    if (availableEnergy >= tapThreshold) {
-      webApp.HapticFeedback?.impactOccurred("rigid");
-      webApp.HapticFeedback?.impactOccurred("heavy");
-      sendTap();
+    if (availableEnergy >= totalPointsPerTap) {
+      webApp.HapticFeedback?.impactOccurred("soft");
+      sendTap(Date.now());
 
       const newItem = {
-        text: `+${tapThreshold}`,
+        text: `+${totalPointsPerTap}`,
         x: clientX,
         y: clientY,
         timeStamp: Date.now()
@@ -111,22 +116,61 @@ const Clicker: FC<Props> = (props: Props) => {
 
   const dressedObj = useMemo(
     () => {
-      const result = dressed.reduce((prev: { [key: string]: ITEM_TYPE }, curr: ITEM_TYPE) => {
-        let {type} = curr;
-        return {...prev, [type]: curr};
-      }, {
-          wojak: {
-            icon: wojak,
-            image: wojak,
-            type: ITEMS_TYPES.WOJAK,
-            rarity: RARITY_TYPES.BASE,
-          }
-        }
-      );
+      const headdressData: string[] = item1Collection.split('_');
+      const outerwearData: string[] = item2Collection.split('_');
+      const pantsData: string[] = item3Collection.split('_');
+      const shoesData: string[] = item4Collection.split('_');
+      const weaponData: string[] = item5Collection.split('_');
 
-      return result
+      // @ts-ignore
+      const headdressType: ITEMS_TYPES = websocketTypeToItemType[headdressData[2]];
+      // @ts-ignore
+      const outerwearType: ITEMS_TYPES = websocketTypeToItemType[outerwearData[2]];
+      // @ts-ignore
+      const pantsType: ITEMS_TYPES = websocketTypeToItemType[pantsData[2]];
+      // @ts-ignore
+      const shoesType: ITEMS_TYPES = websocketTypeToItemType[shoesData[2]];
+      // @ts-ignore
+      const weaponType: ITEMS_TYPES = websocketTypeToItemType[weaponData[2]];
+
+      // @ts-ignore
+      const headdressRarity: RARITY_TYPES =  websocketRarityToItemRarity[headdressData[1]];
+      // @ts-ignore
+      const outerwearRarity: RARITY_TYPES =  websocketRarityToItemRarity[outerwearData[1]];
+      // @ts-ignore
+      const pantsRarity: RARITY_TYPES =  websocketRarityToItemRarity[pantsData[1]];
+      // @ts-ignore
+      const shoesRarity: RARITY_TYPES =  websocketRarityToItemRarity[shoesData[1]];
+      // @ts-ignore
+      const weaponRarity: RARITY_TYPES =  websocketRarityToItemRarity[weaponData[1]];
+
+      const headdressCollection: number = Number(headdressData[3] || 0);
+      const outerwearCollection: number = Number(outerwearData[3] || 0);
+      const pantsCollection: number = Number(pantsData[3] || 0);
+      const shoesCollection: number = Number(shoesData[3] || 0);
+      const weaponCollection: number = Number(weaponData[3] || 0);
+
+      return {
+        [ITEMS_TYPES.HEADDRESS]: `inventory_${headdressRarity}_${headdressType}_${headdressCollection}_${item1Id}`,
+        [ITEMS_TYPES.OUTERWEAR]: `inventory_${outerwearRarity}_${outerwearType}_${outerwearCollection}_${item2Id}`,
+        [ITEMS_TYPES.PANTS]: `inventory_${pantsRarity}_${pantsType}_${pantsCollection}_${item3Id}`,
+        [ITEMS_TYPES.SHOES]: `inventory_${shoesRarity}_${shoesType}_${shoesCollection}_${item4Id}`,
+        [ITEMS_TYPES.WEAPON]: `inventory_${weaponRarity}_${weaponType}_${weaponCollection}_${item5Id}`,
+        [ITEMS_TYPES.WOJAK]: wojak
+      };
     },
-    [dressed]
+    [
+      item1Collection,
+      item2Collection,
+      item3Collection,
+      item4Collection,
+      item5Collection,
+      item1Id,
+      item2Id,
+      item3Id,
+      item4Id,
+      item5Id
+    ]
   );
 
   return (
@@ -139,16 +183,33 @@ const Clicker: FC<Props> = (props: Props) => {
       >
         <div className="clicker-img__wrap">
           {
-            dressedObj.wojak ? (
-              <>
-                <ItemImg className="clicker-img" icon={dressedObj.weapon.image}/>
-                <ItemImg className="clicker-img" icon={dressedObj.wojak.image}/>
-                <ItemImg className="clicker-img" icon={dressedObj.headdress.image}/>
-                <ItemImg className="clicker-img" icon={dressedObj.pants.image}/>
-                <ItemImg className="clicker-img" icon={dressedObj.outerwear.image}/>
-                <ItemImg className="clicker-img" icon={dressedObj.shoes.image}/>
-              </>
-            ) : null
+            // @ts-ignore
+            dressedObj.weapon ? <ItemImg icon={inventoryImages[dressedObj.weapon]} /> : null
+          }
+
+          {
+            // @ts-ignore
+            dressedObj.wojak ? <ItemImg className="clicker-img" icon={dressedObj.wojak}/> : null
+          }
+
+          {
+            // @ts-ignore
+            dressedObj.headdress ? <ItemImg icon={inventoryImages[dressedObj.headdress]} /> : null
+          }
+
+          {
+            // @ts-ignore
+            dressedObj.pants ? <ItemImg icon={inventoryImages[dressedObj.pants]} /> : null
+          }
+
+          {
+            // @ts-ignore
+            dressedObj.outerwear ? <ItemImg icon={inventoryImages[dressedObj.outerwear]} /> : null
+          }
+
+          {
+            // @ts-ignore
+            dressedObj.shoes ? <ItemImg icon={inventoryImages[dressedObj.shoes]} /> : null
           }
         </div>
 
@@ -176,13 +237,4 @@ const Clicker: FC<Props> = (props: Props) => {
     </ClickerContainer>
   );
 };
-
-const mapStateToProps = (state: AppStateType) => {
-  const {app, wallet} = state;
-  return {
-    app,
-    wallet,
-  };
-};
-
-export default connect(mapStateToProps, {clickerClick})(Clicker);
+export default Clicker;

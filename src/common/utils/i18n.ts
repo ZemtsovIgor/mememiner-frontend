@@ -3,6 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import en from '../../assets/locales/en/translation.json';
 import ru from '../../assets/locales/ru/translation.json';
 
+// @ts-ignore
+const webApp = window.Telegram?.WebApp;
 export const LANGUAGES = new Map([
   ['en', 'English'],
   ['ru', 'Русский'],
@@ -22,6 +24,7 @@ i18n
   .init({
     debug: false,
     fallbackLng: 'ru',
+    lng: String(webApp.initDataUnsafe?.user?.language_code || 'en'),
     supportedLngs: Array.from(LANGUAGES.keys()),
     resources: resources,
   });

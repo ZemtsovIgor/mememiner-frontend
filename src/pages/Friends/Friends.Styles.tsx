@@ -3,14 +3,16 @@ import styled from 'styled-components';
 export const FriendsWrap: any = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  height: 100%;
+  //flex: 1 1 auto;
   
   .friends {
     &-wrapper {
       display: flex;
       flex-direction: column;
-      flex: 1 1 auto;
-      padding: 3vmin 4.5vmin 0;
+      height: 100%;
+      //flex: 1 1 auto;
+      padding: 0 4.5vmin;
     }
 
     &-title {
@@ -22,6 +24,7 @@ export const FriendsWrap: any = styled.div`
 
       &__wrap {
         text-align: center;
+        margin-top: 3vmin;
       }
     }
 
@@ -96,7 +99,7 @@ export const FriendsWrap: any = styled.div`
       flex-direction: column;
       justify-content: center;
       flex-grow: 1;
-      margin-top: 1.5vmin;
+      margin-top: 2vmin;
       margin-bottom: 2.5vmin;
       overflow: hidden;
       
@@ -104,12 +107,12 @@ export const FriendsWrap: any = styled.div`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-bottom: 1vmin;
+        margin-bottom: 1.5vmin;
         
         &_title {
-          font-size: 14px;
+          font-size: 3.75vmin;
           font-weight: 500;
-          line-height: 21px;
+          line-height: 3.75vmin;
           letter-spacing: -0.30000001192092896px;
           color: #FFFFFF;
         }
@@ -120,9 +123,9 @@ export const FriendsWrap: any = styled.div`
         }
 
         &_text {
-          font-size: 11px;
+          font-size: 2.95vmin;
           font-weight: 400;
-          line-height: 17px;
+          line-height: 2.95vmin;
           letter-spacing: -0.15000000596046448px;
           color: #FFFFFF;
         }
@@ -147,13 +150,11 @@ export const FriendsWrap: any = styled.div`
         overflow: hidden;
         overflow-y: scroll;
         gap: 1.2vmin;
-        height: 86vmin;
       }
     }
 
     &-friend {
       display: flex;
-      height: 20.6vmin;
       padding: 1.5vmin;
       background: #171417;
       border-radius: 1.5vmin;
@@ -161,7 +162,7 @@ export const FriendsWrap: any = styled.div`
       &__avatar {
         width: 17.6vmin;
         height: 17.6vmin;
-        background: rgba(60, 60, 67, 0.29);
+        //background: rgba(60, 60, 67, 0.29);
         border-radius: 1vmin;
         overflow: hidden;
 
@@ -215,9 +216,9 @@ export const FriendsWrap: any = styled.div`
       &__balance {
         display: flex;
         align-items: center;
-        font-size: 12px;
+        font-size: 3vmin;
         font-weight: 600;
-        line-height: 21px;
+        line-height: 3vmin;
         letter-spacing: -0.30000001192092896px;
         color: #FFFFFF;
         
@@ -275,13 +276,14 @@ export const FriendsWrap: any = styled.div`
     &-actions {
       display: flex;
       gap: 5vmin;
-      margin-bottom: 4vmin;
+      padding-bottom: 4vmin;
       
       &__btn {
         flex: 8;
         text-decoration: none;
         
         &.-copy {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -297,6 +299,33 @@ export const FriendsWrap: any = styled.div`
           & svg {
             width: 100%;
             height: auto;
+          }
+        }
+
+        &:before {
+          content: 'copied';
+          position: absolute;
+          top: -100%;
+          padding: 10px;
+          font-size: 12px;
+          line-height: 15px;
+          color: #fff;
+          background: #4E4F50;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+          border-radius: 1vmin;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+          transition-delay: 1s;
+        }
+
+        &:active {
+          &:before {
+            opacity: 1;
+            visibility: visible;
+            content: 'copied';
+            transition: opacity 0s ease-in-out, visibility 0s ease-in-out;
+            transition-delay: 0s;
           }
         }
       }

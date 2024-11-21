@@ -23,8 +23,7 @@ export const MenuContainer: any = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 10vmin;
-        padding: 4px;
+        height: 100%;
         text-decoration: none;
         border-radius: 4vmin;
         
@@ -45,6 +44,8 @@ export const MenuContainer: any = styled.div`
         svg {
           max-width: 100%;
           max-height: 100%;
+          min-width: 6vmin;
+          min-height: 6vmin;
         }
       }
 

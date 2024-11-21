@@ -5,7 +5,8 @@ export const SelectContainer: any = styled.div`
   display: flex;
   position: relative;
   cursor: pointer;
-  flex: 1;
+  height: 100%;
+  width: 100%;
 
   &.-error {
     input {
@@ -76,7 +77,6 @@ export const SelectElement: any = styled(Select)`
     font-size: 16px;
     line-height: 24px;
     transition: box-shadow 0.3s ease-in-out;
-    background: #171417;
 
 
     .MuiOutlinedInput-notchedOutline {
@@ -84,6 +84,11 @@ export const SelectElement: any = styled(Select)`
     }
     
     .MuiSelect-select {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      min-height: 10vmin;
       padding: 0;
       padding-right: 0!important;
     }
@@ -152,11 +157,11 @@ export const SelectElement: any = styled(Select)`
     box-shadow: 0 0 1px rgba(12, 26, 75, 0.1), 0 10px 16px rgba(20, 37, 63, 0.06);
     margin-top: 0;
     width: calc(100% - 8vmin);
-    max-height: 60vmin;
+    max-height: 74vmin;
   }
 
   .MuiMenu-list {
-    padding: 4px 0;
+    padding: 2vmin 0;
   }
 
   .MuiMenuItem-root {
@@ -165,6 +170,9 @@ export const SelectElement: any = styled(Select)`
     justify-content: center;
     position: relative;
     color: #ffffff;
+    padding: 0;
+    margin: 2vmin 0;
+    min-height: auto;
 
     &.Mui-selected {
       background: transparent;
@@ -324,13 +332,13 @@ export const SelectListItem: any = styled(MenuItem)`
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 3vmin;
-        width: 20vmin;
+        border-radius: 2vmin;
+        width: 47vmin;
         background: #272A2F;
-        font-size: 15px;
+        font-size: 4vmin;
         font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0.3799999952316284px;
+        line-height: 8.5vmin;
+        letter-spacing: -0.1vmin;
         color: #ffffff;
         outline: none;
         border: 0;
@@ -354,10 +362,16 @@ export const Placeholder: any = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 400;
-  font-size: 4vmin;
-  line-height: 6vmin;
+  font-size: 5vmin;
+  font-weight: 500;
+  line-height: 5vmin;
+  letter-spacing: 0.25vmin;
+  text-align: center;
   color: #ffffff;
+  
+  svg {
+    margin-left: 2.5vmin;
+  }
 `;
 
 export const FormControlInputError: any = styled.p`

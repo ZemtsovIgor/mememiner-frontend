@@ -1,15 +1,24 @@
 import styled from 'styled-components';
 
+export const ItemsContainer: any = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 4.5vmin;
+`;
 export const ItemsControl: any = styled.div`
-  border-bottom: #000;
+  margin-top: 3vmin;
   .items {
     &-control {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      height: 12vmin;
+      height: 10vmin;
       width: 100%;
+      background: #171417;
+      border-radius: 2vmin;
+
 
       &__types {
         display: flex;
@@ -44,11 +53,19 @@ export const ItemsControl: any = styled.div`
 `;
 
 export const ItemsWrap: any = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  margin-top: 3.5vmin;
+  margin-bottom: 2.5vmin;
+  overflow: hidden;
+  
   .items {
     &-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 1vmin;
+      gap: 2.5vmin;
       height: 100%;
       overflow: hidden;
       overflow-y: scroll;
@@ -57,13 +74,24 @@ export const ItemsWrap: any = styled.div`
   
   .item {
     display: flex;
+    flex-direction: column;
     position: relative;
     align-items: center;
     justify-content: center;
-    width: 22vmin;
-    height: 22vmin;
+    width: calc((100vw - 20.5vmin) / 4);
+    height: calc((100vw + 1vmin) / 4);
     border-radius: 3vmin;
     background: #171417;
+    padding: 0.5vmin;
+    
+    &.-pointed {
+      cursor: pointer;
+    }
+    
+    &.-overprice {
+      //pointer-events: none;
+      //opacity: 0.5;
+    }
     
     &-container {
       display: flex;
@@ -71,32 +99,33 @@ export const ItemsWrap: any = styled.div`
       justify-content: center;
       background: #171417;
       border-radius: 3vmin;
-      width: 21vmin;
-      height: 21vmin;
+      width: 100%;
+      height: calc((100vw - 20.5vmin) / 4);
+      margin-bottom: auto;
     }
     
     &.-common {
-      background: linear-gradient(180deg, #767676 0.66%, rgba(118, 118, 118, 0.1) 100%);
+      background: linear-gradient(180deg, #767676 0%, rgba(118, 118, 118, 0.36) 100%);
     }
 
     &.-uncommon {
-      background: linear-gradient(180deg, #70B558 0.66%, rgba(112, 181, 88, 0.1) 100%);
+      background: linear-gradient(180deg, #70B558 0%, rgba(112, 181, 88, 0.36) 100%);
     }
 
     &.-rare {
-      background: linear-gradient(180deg, #419ADB 0%, rgba(65, 154, 219, 0.1) 100%);
+      background: linear-gradient(180deg, #419ADB 0%, rgba(65, 154, 219, 0.36) 100%);
     }
 
     &.-epic {
-      background: linear-gradient(180deg, #9747FF 0%, rgba(151, 71, 255, 0.1) 100%);
+      background: linear-gradient(180deg, #9747FF 0%, rgba(151, 71, 255, 0.36) 100%);
     }
 
     &.-legendary {
-      background: linear-gradient(180deg, #FBCE2F 0%, rgba(251, 206, 47, 0.1) 100%);
+      background: linear-gradient(180deg, #FBCE2F 0%, rgba(251, 206, 47, 0.36) 100%);
     }
 
     &.-mythic {
-      background: linear-gradient(180deg, #B93633 0%, rgba(185, 54, 51, 0.1) 100%);
+      background: linear-gradient(180deg, #B93633 0%, rgba(185, 54, 51, 0.36) 100%);
     }
 
     &.-hidden {
@@ -107,12 +136,28 @@ export const ItemsWrap: any = styled.div`
       &::before {
         content: "";
         position: absolute;
-        top: 13px;
-        right: 14px;
-        width: 16px;
-        height: 12px;
-        background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE0LjY2NjMgMUw1LjQ5OTY3IDEwLjE2NjdMMS4zMzMwMSA2IiBzdHJva2U9IiMxNWZmMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=) no-repeat;
+        top: 3px;
+        right: 4px;
+        width: 18px;
+        height: 17px;
+        background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxOCAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAgMEgxMEMxNC40MTgzIDAgMTggMy41ODE3MiAxOCA4VjE3TDAgMFoiIGZpbGw9IiNGMjlDMDciLz4KPC9zdmc+Cg==) no-repeat;
         transition: transform 0.3s ease-in-out 0s;
+      }
+    }
+
+    &-price {
+      font-size: 3.5vmin;
+      font-weight: 400;
+      line-height: 3.5vmin;
+      margin-top: 1.5vmin;
+      margin-bottom: 0.5vmin;
+      letter-spacing: -0.15000000596046448px;
+      color: #FFFFFF;
+
+      &__wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

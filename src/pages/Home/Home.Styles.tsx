@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
+export const HomeContainer: any = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
 export const Counters: any = styled.div`
   padding: 0 4.5vmin;
+  margin-top: 2vmin;
+  margin-bottom: 2vmin;
   
   .counters {
     &-wrapper {
@@ -20,13 +27,20 @@ export const Counters: any = styled.div`
 
     &-item {
       display: flex;
+      flex: 1;
       flex-direction: column;
-      background: #171417;
-      border-radius: 4vmin;
       text-align: center;
-      padding: 1vmin 0;
+      padding: 1.75vmin 0;
       padding-bottom: 1.5vmin;
       position: relative;
+      
+      &.-small {
+        flex: 0.65;
+      }
+      
+      &.-big {
+        flex: 1.3;
+      }
 
       &__name {
         display: inline-block;
@@ -49,8 +63,8 @@ export const Counters: any = styled.div`
       &__value {
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-top: 1vmin;
+        justify-content: space-between;
+        margin-top: 0.5vmin;
         
         &_text {
           font-size: 3vmin;
@@ -58,6 +72,7 @@ export const Counters: any = styled.div`
           line-height: 3vmin;
           letter-spacing: -0.30000001192092896px;
           color: #ffffff;
+          margin-right: auto;
         }
       }
       
@@ -85,16 +100,13 @@ export const Counters: any = styled.div`
       
       &__info {
         display: block;
-        position: absolute;
-        right: 0.95rem;
-        margin-left: 2vmin;
       }
     }
   }
 `;
 
 export const ProgressLine: any = styled.div<{ progress?: number; pointslength?: number; }>`
-  flex: 2;
+  flex: 3;
   display: flex;
   margin-top: -3px;
   
@@ -103,10 +115,9 @@ export const ProgressLine: any = styled.div<{ progress?: number; pointslength?: 
       flex: 5;
       display: flex;
       flex-direction: column;
+      padding-right: 1.5vmin;
     }
-    &-shit {
-      flex: 1;
-    }
+
     &-annotation {
       display: flex;
       align-items: center;
@@ -203,8 +214,8 @@ export const Balance: any = styled.div<{ balancelength?: number; }>`
   
   .balance {
     &-icon {
-      width: 14vmin;
-      height: 14vmin;
+      width: 13.5vmin;
+      height: 13.5vmin;
       
       & svg {
         width: 100%;
@@ -227,7 +238,7 @@ export const Balance: any = styled.div<{ balancelength?: number; }>`
       line-height: 8vmin;
       letter-spacing: -0.30000001192092896px;
       color: #ffffff;
-      width: ${props => props.balancelength ? props.balancelength * 6 : 0}vmin;
+      width: ${props => props.balancelength ? props.balancelength * 7 : 0}vmin;
     }
   }
 `;
@@ -235,10 +246,11 @@ export const Balance: any = styled.div<{ balancelength?: number; }>`
 export const BottomContent: any = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  flex-grow: 1;
-  padding: 0 4.5vmin;
-  margin-bottom: -2vmin;
+  justify-content: flex-start;
+  gap: 15vmin;
+  //flex-grow: 1;
+  padding: 2.5vmin 4.5vmin 0 12.5vmin;
+  //margin-bottom: -2vmin;
 `;
 
 export const Energy: any = styled.div`
@@ -280,6 +292,7 @@ export const Lootbox: any = styled.div`
   justify-content: center;
   margin-top: 0;
   margin-left: -7vmin;
+  cursor: pointer;
   
   .lootbox {
     &-btn {
@@ -301,7 +314,8 @@ export const Lootbox: any = styled.div`
 export const MultiTap: any = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin-top: auto;
   
   .multitap {
     background: #171417;
@@ -313,14 +327,19 @@ export const MultiTap: any = styled.div`
 
     &-icon {
       margin-right: 1vmin;
-      width: 5vmin;
+      width: 2.75vmin;
       height: auto;
+      
+      &__wrap {
+        margin-right: 1.25vmin;
+      }
     }
 
     &-value {
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-right: auto;
 
       &__text {
         font-size: 3vmin;

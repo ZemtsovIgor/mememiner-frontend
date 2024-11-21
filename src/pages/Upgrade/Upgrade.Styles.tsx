@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
+export const UpgradeContainer: any = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 4.5vmin;
+`;
+
 export const Counters: any = styled.div`
-  padding: 2vmin 4.5vmin 0;
+  margin-top: 2vmin;
 
   .counters {
     &-wrapper {
@@ -93,8 +100,6 @@ export const Balance: any = styled.div`
   align-items: center;
   justify-content: center;
   margin: 4.5vmin 0 0;
-  padding: 0 4.5vmin;
-  
   
   .balance {
     &-icon {
@@ -118,7 +123,7 @@ export const Balance: any = styled.div`
 `;
 
 export const CardTypesControl: any = styled.div`
-  padding: 2vmin 4.5vmin 0;
+  margin-top: 2vmin;
   
   .cards {
     &-control {
@@ -127,7 +132,6 @@ export const CardTypesControl: any = styled.div`
       align-items: center;
       justify-content: space-between;
       height: 10vmin;
-      gap: 11px;
       background: #171417;
       padding: 1vmin;
 
@@ -136,14 +140,14 @@ export const CardTypesControl: any = styled.div`
         flex-direction: row;
         justify-content: space-between;
         flex: 2;
-        gap: 11px;
+        gap: 1vmin;
         overflow: hidden;
         overflow-x: scroll;
       }
 
       &__btn {
         flex: 1;
-        padding: 10px 0;
+        padding: 3vmin 0;
         background: transparent;
         border: 0;
         box-shadow: none;
@@ -153,11 +157,16 @@ export const CardTypesControl: any = styled.div`
         letter-spacing: -0.30000001192092896px;
         color: #707579;
         border-radius: 1vmin;
-
+        cursor: pointer;
+        transition: opacity 0.5s ease-in-out;
 
         &.-active {
           background: #9747FF;
           color: #FFFFFF;
+        }
+
+        &:hover {
+          opacity: 0.8;
         }
       }
     }
@@ -166,9 +175,11 @@ export const CardTypesControl: any = styled.div`
 
 export const CardsWrap: any = styled.div`
   display: flex;
+  overflow-y: scroll;
   flex-wrap: wrap;
   gap: 3vmin;
-  padding: 4.5vmin 4.5vmin 0;
+  margin-top: 4.5vmin;
+  margin-bottom: 3vmin;
   
   .card {
     display: flex;
@@ -177,10 +188,12 @@ export const CardsWrap: any = styled.div`
     background: #322F34;
     border-radius: 1vmin;
     padding: 1vmin;
+    cursor: pointer;
 
     &-info {
       display: flex;
       flex-direction: row;
+      margin-bottom: 0.1vmin;
       
       &__avatar {
         flex: 1;
@@ -207,6 +220,7 @@ export const CardsWrap: any = styled.div`
         line-height: 3.7vmin;
         letter-spacing: -0.30000001192092896px;
         color: #FFFFFF;
+        word-break: keep-all;
       }
 
       &__level {
@@ -261,7 +275,6 @@ export const CardsWrap: any = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 0.1vmin;
       font-size: 3.25vmin;
       font-weight: 600;
       line-height: 3.25vmin;
@@ -269,7 +282,8 @@ export const CardsWrap: any = styled.div`
       color: #FFFFFF;
       background: #171417;
       border-radius: 1vmin;
-      padding: 1.5vmin 0px;
+      padding: 1.5vmin 0;
+      margin-top: auto;
 
       &__icon {
         margin-right: 2vmin;
@@ -280,6 +294,10 @@ export const CardsWrap: any = styled.div`
           width: 100%;
           height: auto;
         }
+      }
+      
+      &.-inactive {
+        opacity: 0.5;
       }
     }
   }

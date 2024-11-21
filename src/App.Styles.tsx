@@ -93,7 +93,7 @@ const GlobalStyle: any = createGlobalStyle`
   //}
 
   body {
-    background: #1C1F24;
+    background: #000000;
     font-family: 'SF Pro Text', sans-serif;
     width: 100%;
     height: 100%;
@@ -101,7 +101,7 @@ const GlobalStyle: any = createGlobalStyle`
     height: -moz-available;
     height: -webkit-fill-available;
     height: fill-available;
-    //overflow: hidden;
+    overflow: hidden;
   }
 
   #root {

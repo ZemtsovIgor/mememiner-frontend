@@ -1,3 +1,5 @@
+import {WebSocketWallet} from "./webSocketTypes";
+
 export enum USER_TYPES {
   SLAVE = 'slave',
   FARMER = 'farmer',
@@ -6,11 +8,10 @@ export enum USER_TYPES {
 }
 
 export interface FRIEND {
-  name: string;
-  type: USER_TYPES;
-  balance: number;
-  profitPerHour: number;
-  avatar: string;
+  uid: string | null;
+  firstname?: string | null;
+  lastname?: string | null;
+  state: WebSocketWallet | null;
 }
 
 export const USER_TYPE_BY_RANK: any = {

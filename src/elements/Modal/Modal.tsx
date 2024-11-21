@@ -42,9 +42,11 @@ export const Modal: React.FC<Props> = (props: Props) => {
       <div className={`modal__dialog ${opened ? 'active' : ''}`}>
         {
           hasCloseBtn && (
-            <button className="modal__close-btn" onClick={closeClick}>
-              <Icon className="modal__close" name="close" size="12" />
-            </button>
+            <div className="modal__close-wrap">
+              <button className="modal__close-btn" onClick={closeClick}>
+                <Icon className="modal__close" name="close" size="12"/>
+              </button>
+            </div>
           )
         }
         {children}

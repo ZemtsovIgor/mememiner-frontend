@@ -3,17 +3,18 @@ import styled from 'styled-components';
 export const HeaderContainer: any = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 4vmin 4.5vmin 2vmin 4.5vmin;
+  padding: 4vmin 4.5vmin 1vmin 4.5vmin;
   
   .header {
     &-left {}
     &-right {
-      &__square {
-        width: 30vmin;
-        height: 8.5vmin;
-        background-color: #171417;
-        border-radius: 5vmin;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30vmin;
+      height: 8.5vmin;
+      background-color: #171417;
+      border-radius: 5vmin;
     }
   }
   
@@ -30,6 +31,7 @@ export const HeaderContainer: any = styled.div`
       margin-right: 3.5vmin;
       overflow: hidden;
       width: 8.5vmin;
+      border-radius: 1vmin;
       
       &_img {
         height: 100%;

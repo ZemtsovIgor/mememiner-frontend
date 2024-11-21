@@ -132,7 +132,7 @@ export const Select: React.FC<Props> = (props: Props) => {
               value={item.value}
             >
               <div
-                className={`select-option ${item.type === 'sort' && values.sort === item.value ? '-active' : ''} ${item.type === 'type' && values.type === item.value ? '-active' : ''}`}
+                className={`select-option ${item.type === 'sort' && values.sort === item.value ? '-active' : ''} ${item.type === 'type' && values.type === item.value ? '-active' : ''} ${item.type === 'filter' && values.filterParam === item.value ? '-active' : ''}`}
               >
                 <button
                   className="select-option__text"
@@ -140,28 +140,28 @@ export const Select: React.FC<Props> = (props: Props) => {
                 >
                   {item.text}
                 </button>
-                {
-                  item.type === 'sort' && values.sort === item.value ? (
-                    <Button
-                      className="select-option__btn"
-                      type="button"
-                      onClick={(e) => onItemSelect(e, item.value, item.type)}
-                    >
-                      <Icon className="select-option__btn_icon" name="info" size="12"/>
-                    </Button>
-                  ) : null
-                }
-                {
-                  item.type === 'type' && values.type === item.value ? (
-                    <Button
-                      className="select-option__btn"
-                      type="button"
-                      onClick={(e) => onItemSelect(e, item.value, item.type)}
-                    >
-                      <Icon className="select-option__btn_icon" name="crest" size="12"/>
-                    </Button>
-                  ) : null
-                }
+                {/*{*/}
+                {/*  item.type === 'sort' && values.sort === item.value ? (*/}
+                {/*    <Button*/}
+                {/*      className="select-option__btn"*/}
+                {/*      type="button"*/}
+                {/*      onClick={(e) => onItemSelect(e, item.value, item.type)}*/}
+                {/*    >*/}
+                {/*      <Icon className="select-option__btn_icon" name="info" size="12"/>*/}
+                {/*    </Button>*/}
+                {/*  ) : null*/}
+                {/*}*/}
+                {/*{*/}
+                {/*  item.type === 'type' && values.type === item.value ? (*/}
+                {/*    <Button*/}
+                {/*      className="select-option__btn"*/}
+                {/*      type="button"*/}
+                {/*      onClick={(e) => onItemSelect(e, item.value, item.type)}*/}
+                {/*    >*/}
+                {/*      <Icon className="select-option__btn_icon" name="crest" size="12"/>*/}
+                {/*    </Button>*/}
+                {/*  ) : null*/}
+                {/*}*/}
               </div>
             </SelectListItem>
           ))}

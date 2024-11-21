@@ -82,6 +82,18 @@ export const ImproveCardStyle: any = styled.div`
       }
     }
     
+    &-error {
+      display: block;
+      margin: 0 auto;
+      margin-top: 3vmin;
+      font-size: 2.65vmin;
+      font-weight: 400;
+      line-height: 3vmin;
+      letter-spacing: -0.15000000596046448px;
+      color: #f44336;
+      text-align: center;
+    }
+    
     &-actions {
       display: flex;
       margin-top: 4vmin;

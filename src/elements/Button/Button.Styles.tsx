@@ -15,19 +15,23 @@ export const ButtonContainer: any = styled.button`
   font-weight: 500;
   font-size: 5vmin;
   line-height: 7vmin;
+  text-decoration: none;
 
   &:focus {
     color: #ffffff;
   }
 
   &:hover {
+    opacity: .8;
   }
 
   &:active {
+    opacity: .8;
   }
 
   &:disabled,
   &[disabled] {
     cursor: not-allowed;
+    opacity: .8;
   }
 `;
