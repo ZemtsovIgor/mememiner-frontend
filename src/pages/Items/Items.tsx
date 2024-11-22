@@ -12,6 +12,7 @@ import {AppStateType} from "../../store";
 import {connect} from "react-redux";
 import {closeModal, openModal} from "../../store/app/actions";
 import {InventoryCard} from "../../components/Modals";
+import {formatNumber} from "../../common/utils/formatters";
 
 interface Props {
   openModal: (payload: any) => void;
@@ -216,7 +217,7 @@ const Items: FC<Props> = (props: Props) => {
                 <div className="item-price__wrap">
                   {
                     item.bought ? null : (
-                      <span className="item-price">{item.price}</span>
+                      <span className="item-price">{formatNumber(Number(item.price), 0, 0)}</span>
                     )
                   }
                 </div>

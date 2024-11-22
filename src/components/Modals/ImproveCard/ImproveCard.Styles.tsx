@@ -101,6 +101,45 @@ export const ImproveCardStyle: any = styled.div`
 
     &-btn {
       flex: 1;
+
+      &.-icon {
+          padding: 1.5vmin 3vmin;
+      }
+
+      &__title {
+          font-size: 3.4vmin;
+          font-weight: 500;
+          line-height: 3.4vmin;
+          letter-spacing: 0.3799999952316284px;
+          text-align: center;
+
+          color: #FFFFFF;
+          margin-bottom: 1.25vmin;
+      }
+
+      &__value {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          margin-top: auto;
+          font-size: 3.6vmin;
+          font-weight: 500;
+          line-height: 3.6vmin;
+          letter-spacing: 0.3799999952316284px;
+          color: #FFFFFF;
+      }
+
+      &__icon {
+        margin-right: 2vmin;
+        width: 4.5vmin;
+        height: 4.5vmin;
+
+        & svg {
+            width: 100%;
+            height: auto;
+        }
+      }
     }
   }
 `;

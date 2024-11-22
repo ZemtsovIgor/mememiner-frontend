@@ -10,6 +10,7 @@ import {nFormatter} from "../../../common/utils/formatters";
 import {WebSocketContextApi} from "../../../types/webSocketTypes";
 import useWebSocket from "../../../hooks/useWebSocket";
 import {useTranslation} from "react-i18next";
+import { ReactComponent as CoinSVG } from "../../../assets/images/coin.svg";
 
 interface Props {
   closeModal: () => void;
@@ -74,14 +75,20 @@ const ImproveCard: React.FC<Props> = (props: Props) => {
             </Button>
           ) : (
             <Button
-              className="improveCard-btn"
+              className="improveCard-btn -icon"
               type="button"
               onClick={() => {
                 buyCard(card);
               }}
               disabled={(card.price || 0) > points}
             >
-              {t('common.buy')}
+              <span className="improveCard-btn__title">{t('common.buy')}</span>
+              <div className="improveCard-btn__value">
+                <div className="improveCard-btn__icon">
+                  <CoinSVG/>
+                </div>
+                {card.price}
+              </div>
             </Button>
           )
         }
