@@ -144,6 +144,7 @@ export const TasksWrap: any = styled.div`
       letter-spacing: -0.30000001192092896px;
       text-align: left;
       color: #FFFFFF;
+      text-transform: capitalize;
     }
 
     &-reward {
