@@ -261,6 +261,11 @@
     "list": {
       "title": "Список заданий"
     },
+    "names": {
+      "twitter": "X(Twitter)",
+      "youtube": "YouTube",
+      "telegram": "Telegram"
+    },
     "modals": {
       "daily_reward": {
         "title": "Ежедневная Награда",

@@ -261,6 +261,11 @@
     "list": {
       "title": "Task List"
     },
+    "names": {
+      "twitter": "X(Twitter)",
+      "youtube": "YouTube",
+      "telegram": "Telegram"
+    },
     "modals": {
       "daily_reward": {
         "title": "Daily Reward",

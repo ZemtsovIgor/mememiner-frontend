@@ -98,7 +98,7 @@ const Tasks: FC<Props> = (props: Props) => {
                   </div>
                   <div className="task-rows">
                     <div className="task-rows__side">
-                      <span className="task-title">{task.name}</span>
+                      <span className="task-title">{t(`tasks.names.${task.name}`)}</span>
                       <div className="task-reward">
                         <div className="task-reward__icon">
                           <img className="task-reward__icon_img" src="/img/coin.png" alt=""/>
