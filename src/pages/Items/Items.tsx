@@ -216,8 +216,8 @@ const Items: FC<Props> = (props: Props) => {
                 </div>
                 <div className="item-price__wrap">
                   {
-                    item.bought && item.price ? null : (
-                      <span className="item-price">{formatNumber(Number(item.price), 0, 0)}</span>
+                    item.bought ? null : (
+                      <span className="item-price">{!!item.price ? formatNumber(Number(item.price), 0, 0) : ''}</span>
                     )
                   }
                 </div>
