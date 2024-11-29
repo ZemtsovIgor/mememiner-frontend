@@ -6,6 +6,9 @@ export const LoadingStyles: any = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  //background-image: url("/img/splash.png");
+  //background-position: center;
+  //background-size: cover;
 
   .image {
     text-align: center;
